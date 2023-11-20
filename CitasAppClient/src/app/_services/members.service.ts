@@ -14,24 +14,12 @@ export class MembersService {
   
   getMembers()
   {
-      return this.http.get<IMember[]>(this.baseUrl + "users", this.getHttpOptions());
+      return this.http.get<IMember[]>(this.baseUrl + "users");
   }
 
   getMember(username: string) 
   {
-      return this.http.get<IMember>(this.baseUrl + "users/" + username, this.getHttpOptions());
-  }
-
-  getHttpOptions() 
-  {
-      const userString = localStorage.getItem("users");
-      if (!userString) return;
-      const user = JSON.parse(userString);
-      return {
-        headers: new HttpHeaders({
-          Authorization: "Bearer " + user.token
-        })
-      }
+      return this.http.get<IMember>(this.baseUrl + "users/" + username);
   }
   
 }
