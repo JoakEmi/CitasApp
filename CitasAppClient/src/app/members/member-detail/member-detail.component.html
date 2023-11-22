@@ -41,9 +41,8 @@
                 <h4>Intereses</h4>
                 <p>{{member.interests}}</p>
             </tab>
-            <tab heading="Fotografías">
-                <h4>Fotografías</h4>
-                <p>¡Las fotografías irán aquí!</p>
+            <tab heading="Fotografías" #photoTab="tab">
+                <gallery thumbPosition="left" *ngIf="photoTab.active" [items]="images" class="gallery"></gallery>
             </tab>
             <tab heading="Mensajes">
                 <h4>Mensajes</h4>
