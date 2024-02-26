@@ -1,5 +1,6 @@
 using API.Data;
 using API.DTOs;
+using System.Security.Claims; 
 using API.Entities;
 using API.Interfaces;
 using AutoMapper;
@@ -51,7 +52,7 @@ public class UsersController : BaseApiController
     {
         var username = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
         var user = await _userRepository.GetUserByUsernameAsync(username);
-        
+
         if (user == null) return NotFound();
 
         _mapper.Map(memberUpdateDto, user);
